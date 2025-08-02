@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OfficeTrack Pro | Entry/Exit</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6c5ce7;
+      --secondary: #a29bfe;
+      --accent: #fd79a8;
+      --dark: #2d3436;
+      --light: #f5f6fa;
+      --success: #00b894;
+      --warning: #fdcb6e;
+      --danger: #d63031;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: var(--dark);
+      min-height: 100vh;
+    }
+
+    nav {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow);
+      animation: slideDown 0.5s ease;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo i {
+      margin-right: 10px;
+      color: var(--accent);
+      font-size: 1.8rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 30px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li a i {
+      margin-right: 8px;
+    }
+
+    nav ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    nav ul li a.active {
+      background-color: var(--accent);
+      box-shadow: 0 4px 15px rgba(253, 121, 168, 0.4);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      color: var(--dark);
+      margin-bottom: 25px;
+      text-align: center;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    h1:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      border-radius: 3px;
+    }
+
+    h1 i {
+      margin-right: 10px;
+      color: var(--primary);
+    }
+
+    /* Card Styles */
+    .card {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      margin-bottom: 30px;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    input:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(253, 121, 168, 0.3);
+      outline: none;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    button {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
+      font-weight: 600;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+    }
+
+    button i {
+      margin-right: 10px;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, var(--secondary), var(--primary));
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(108, 92, 231, 0.4);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: var(--shadow);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    table:hover {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+    }
+
+    tr {
+      transition: var(--transition);
+    }
+
+    tr:hover {
+      background-color: rgba(162, 155, 254, 0.1);
+      transform: translateX(5px);
+    }
+
+    /* Status Badges */
+    .status {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .status-present {
+      background-color: rgba(0, 184, 148, 0.2);
+      color: var(--success);
+    }
+
+    .status-absent {
+      background-color: rgba(214, 48, 49, 0.2);
+      color: var(--danger);
+    }
+
+    /* Duration Badge */
+    .duration {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background-color: rgba(253, 203, 110, 0.2);
+      color: #e17055;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(to right, var(--success), #55efc4);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+      transform: translateX(150%);
+      transition: transform 0.3s ease;
+    }
+
+    .toast.show {
+      transform: translateX(0);
+    }
+
+    .toast i {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    .toast.error {
+      background: linear-gradient(to right, var(--danger), #ff7675);
+    }
+
+    /* Search and Filter */
+    .search-filter {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .search-filter input, .search-filter select {
+      flex: 1;
+      padding: 10px 15px;
+    }
+
+    /* Floating Action Button */
+    .fab {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 5px 20px rgba(108, 92, 231, 0.4);
+      cursor: pointer;
+      transition: var(--transition);
+      z-index: 100;
+    }
+
+    .fab:hover {
+      transform: scale(1.1) rotate(90deg);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        padding: 15px;
+      }
+
+      nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav ul li {
+        margin: 5px;
+      }
+
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .search-filter {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <i class="fas fa-door-open"></i>
+      <span>OfficeTrack Pro</span>
+    </div>
+    
+  </nav>
+
+  <main>
+    <h1><i class="fas fa-door-open"></i> Office Entry/Exit Log</h1>
+    
+    <div class="card">
+      <form id="entryExitForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required placeholder="Enter full name">
+          </div>
+          <div class="form-group">
+            <label for="employeeId">Employee ID</label>
+            <input type="text" id="employeeId" required placeholder="Enter employee ID">
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" required>
+          </div>
+          <div class="form-group">
+            <label for="entryTime">Entry Time</label>
+            <input type="time" id="entryTime" required>
+          </div>
+          <div class="form-group">
+            <label for="exitTime">Exit Time</label>
+            <input type="time" id="exitTime" required>
+          </div>
+        </div>
+        
+        <button type="submit"><i class="fas fa-save"></i> Save Entry/Exit</button>
+      </form>
+    </div>
+    
+    <div class="card">
+      <div class="search-filter">
+        <input type="text" id="searchInput" placeholder="Search by name or ID...">
+        <input type="date" id="dateFilter">
+      </div>
+      
+      <table id="entryExitTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Employee ID</th>
+            <th>Date</th>
+            <th>Entry Time</th>
+            <th>Exit Time</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody id="entryExitRecords">
+          <!-- Records will be added here by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Floating Action Button -->
+  <div class="fab" id="addRecordBtn">
+    <i class="fas fa-plus"></i>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastMessage">Entry/Exit saved successfully!</span>
+  </div>
+
+  <script>
+    // DOM Elements
+    const entryExitForm = document.getElementById('entryExitForm');
+    const entryExitRecords = document.getElementById('entryExitRecords');
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
+    const addRecordBtn = document.getElementById('addRecordBtn');
+    const searchInput = document.getElementById('searchInput');
+    const dateFilter = document.getElementById('dateFilter');
+
+    // Data storage
+    let entryExitData = JSON.parse(localStorage.getItem('entryExitData')) || [];
+    let employees = JSON.parse(localStorage.getItem('employees')) || [];
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set current date and time
+      const now = new Date();
+      document.getElementById('date').valueAsDate = now;
+      
+      // Format time as HH:MM
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      document.getElementById('entryTime').value = `${hours}:${minutes}`;
+      document.getElementById('exitTime').value = `${hours}:${minutes}`;
+      
+      // Load initial data
+      updateEntryExitTable();
+      
+      // Set up event listeners
+      setupEventListeners();
+    });
+
+    // Set up event listeners
+    function setupEventListeners() {
+      // Form submission
+      entryExitForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        submitEntryExit();
+      });
+
+      // Add record button
+      addRecordBtn.addEventListener('click', function() {
+        document.getElementById('entryExitForm').scrollIntoView({ behavior: 'smooth' });
+      });
+
+      // Search and filter
+      searchInput.addEventListener('input', updateEntryExitTable);
+      dateFilter.addEventListener('change', updateEntryExitTable);
+    }
+
+    // Submit entry/exit form
+    function submitEntryExit() {
+      // Get form values
+      const name = document.getElementById('name').value;
+      const employeeId = document.getElementById('employeeId').value;
+      const date = document.getElementById('date').value;
+      const entryTime = document.getElementById('entryTime').value;
+      const exitTime = document.getElementById('exitTime').value;
+      
+      // Validate entry and exit times
+      if (new Date(`1970-01-01T${exitTime}`) < new Date(`1970-01-01T${entryTime}`)) {
+        showToast('Exit time cannot be before entry time', true);
+        return;
+      }
+      
+      // Create new record
+      const record = {
+        name,
+        employeeId,
+        date,
+        entryTime,
+        exitTime,
+        timestamp: new Date().getTime()
+      };
+      
+      // Add to data array
+      entryExitData.push(record);
+      
+      // Save to localStorage
+      localStorage.setItem('entryExitData', JSON.stringify(entryExitData));
+      
+      // Show success message
+      showToast('Entry/Exit record saved successfully!');
+      
+      // Reset form
+      entryExitForm.reset();
+      
+      // Set current date and time again
+      const now = new Date();
+      document.getElementById('date').valueAsDate = now;
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      document.getElementById('entryTime').value = `${hours}:${minutes}`;
+      document.getElementById('exitTime').value = `${hours}:${minutes}`;
+      
+      // Update table
+      updateEntryExitTable();
+    }
+
+    // Update entry/exit table
+    function updateEntryExitTable() {
+      entryExitRecords.innerHTML = '';
+      
+      const searchTerm = searchInput.value.toLowerCase();
+      const dateFilterValue = dateFilter.value;
+      
+      let filteredData = [...entryExitData];
+      
+      // Apply filters
+      if (searchTerm) {
+        filteredData = filteredData.filter(record => 
+          record.name.toLowerCase().includes(searchTerm) || 
+          record.employeeId.toLowerCase().includes(searchTerm)
+        );
+      }
+      
+      if (dateFilterValue) {
+        filteredData = filteredData.filter(record => record.date === dateFilterValue);
+      }
+      
+      if (filteredData.length === 0) {
+        const row = document.createElement('tr');
+        row.innerHTML = '<td colspan="6" style="text-align: center;">No entry/exit records found</td>';
+        entryExitRecords.appendChild(row);
+        return;
+      }
+      
+      // Sort by date (newest first)
+      filteredData.sort((a, b) => new Date(b.date) - new Date(a.date));
+      
+      filteredData.forEach(record => {
+        const row = document.createElement('tr');
+        const duration = calculateDuration(record.entryTime, record.exitTime);
+        
+        row.innerHTML = `
+          <td>${record.name}</td>
+          <td>${record.employeeId}</td>
+          <td>${formatDate(record.date)}</td>
+          <td>${formatTime(record.entryTime)}</td>
+          <td>${formatTime(record.exitTime)}</td>
+          <td><span class="duration">${duration}</span></td>
+        `;
+        entryExitRecords.appendChild(row);
+      });
+    }
+
+    // Calculate duration between two times
+    function calculateDuration(startTime, endTime) {
+      const [startHours, startMins] = startTime.split(':').map(Number);
+      const [endHours, endMins] = endTime.split(':').map(Number);
+      
+      const startDate = new Date(0, 0, 0, startHours, startMins);
+      const endDate = new Date(0, 0, 0, endHours, endMins);
+      
+      let diff = endDate - startDate;
+      if (diff < 0) {
+        // Handle overnight shifts
+        diff += 24 * 60 * 60 * 1000;
+      }
+      
+      const hours = Math.floor(diff / (60 * 60 * 1000));
+      const minutes = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
+      
+      return `${hours}h ${minutes}m`;
+    }
+
+    // Format date as DD/MM/YYYY
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      const day = date.getDate().toString().padStart(2, '0');
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const year = date.getFullYear();
+      return `${day}/${month}/${year}`;
+    }
+
+    // Format time as HH:MM AM/PM
+    function formatTime(timeString) {
+      const [hours, minutes] = timeString.split(':');
+      const hourNum = parseInt(hours);
+      const ampm = hourNum >= 12 ? 'PM' : 'AM';
+      const hour12 = hourNum % 12 || 12;
+      return `${hour12}:${minutes} ${ampm}`;
+    }
+
+    // Show toast notification
+    function showToast(message, isError = false) {
+      toastMessage.textContent = message;
+      
+      if (isError) {
+        toast.style.background = 'linear-gradient(to right, var(--danger), #ff7675)';
+      } else {
+        toast.style.background = 'linear-gradient(to right, var(--success), #55efc4)';
+      }
+      
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
